@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'dotenv', groups: [:development, :test]
 
 gem 'rails', '~> 5.2.1'
 gem 'devise'
@@ -18,6 +19,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'execjs'
 gem 'mini_racer'
+
+#DISCOGS_WRAPPER
+gem 'discogs-wrapper'
 
 # BOOTSTRAP
 gem 'bootstrap'
