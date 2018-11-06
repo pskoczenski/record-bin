@@ -1,0 +1,46 @@
+<div class="container">
+  <h1>
+    Hello
+    <%= @user.email %>
+    !
+  </h1>
+  <p>
+    Welcome to your new Record App!
+  </p>
+  <div class="container">
+    <input id="album_search_input" type="text" name="album_search" placeholder="Search for an Album">
+    <button id="album_search_btn" type="button" name="button">Search</button>
+  </div>
+  <br>
+  <div class="album_search_content">
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+  const url = 'https://api.discogs.com/releases/10816982';
+  const alb = document.getElementById('album_search_btn')
+  function btnTest() {
+
+    alb.onclick = function(){
+      alert("clicked.");
+      // var val = $("input[type=text][name=album_search]").val();
+      // var request = new XMLHttpRequest();
+      // request.open('GET', 'https://api.discogs.com/releases/10816982', true);
+      // request.onload = function () {
+      //   var data = JSON.parse(this.response);
+      //   console.log(data)
+      // };
+      fetch(url)
+      .then((resp) => resp.json())
+      .then(function(data) {
+        console.log(data);
+      })
+    };
+
+  }
+
+  btnTest();
+
+</script>
