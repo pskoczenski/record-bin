@@ -15,32 +15,43 @@
   <div class="album_search_content">
 
   </div>
+  <ul id="artitst_title">
+  </ul>
 </div>
-
+<style media="screen">
+  #discogs_thumb {
+    max-width: 100px;
+    height: auto;
+  }
+</style>
 <script type="text/javascript">
-
   const url = 'https://api.discogs.com/releases/10816982';
-  const alb = document.getElementById('album_search_btn')
+  const searchInput = document.getElementById('album_search_input')
+  const searchSubmitBtn = document.getElementById('album_search_btn')
   function btnTest() {
-
-    alb.onclick = function(){
-      alert("clicked.");
-      // var val = $("input[type=text][name=album_search]").val();
-      // var request = new XMLHttpRequest();
-      // request.open('GET', 'https://api.discogs.com/releases/10816982', true);
-      // request.onload = function () {
-      //   var data = JSON.parse(this.response);
-      //   console.log(data)
-      // };
+    searchInput.onkeyup = function(){
+    // searchSubmitBtn.onclick = function(){
+      var query = $("input[type=text][name=album_search]").val();
+      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&{?type,artist,title,release_title}&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL&results=5'
       fetch(url)
       .then((resp) => resp.json())
       .then(function(data) {
-        console.log(data);
+        console.log(data)
+        let result = data;
+        let results = data["results"]
+        let len = result["results"].length
+        let listOfElement = []
+        for (i = 0; i < len; i++) {
+          r = results[i]
+          title = r["title"];
+          cover = r["cover_image"]
+          listOfElement.push("<li><img src=" + cover + " id='discogs_thumb'><h3>" + title + "</h3></li>")
+        }
+        loe = listOfElement.join("")
+        container = document.querySelector("#artitst_title")
+        container.innerHTML = loe
       })
     };
-
   }
-
   btnTest();
-
 </script>
