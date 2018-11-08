@@ -31,7 +31,7 @@
     // searchInput.onkeyup = function(){
     searchSubmitBtn.onclick = function(){
       var query = $("input[type=text][name=album_search]").val();
-      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&{?type=master}&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL&results=5'
+      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
       fetch(url)
       .then((resp) => resp.json())
       .then(function(data) {
@@ -49,7 +49,7 @@
           format = r["format"]
           id = r["id"]
           const markup = `
-            <a href="#">
+            <a href="album/new?album_id=${id} &type=${type}">
               <li>
                 <div class="result-container">
                   <img src="${cover}" id='discogs_thumb'>
@@ -63,7 +63,6 @@
               </li>
             </a>
           `;
-          // listOfElement.push("<li><img src=" + cover + " id='discogs_thumb'><h3>" + title + "</h3><h5>" + type + "</h5><p>" + format + "</p></li>")
           listOfElement.push(markup)
         }
         loe = listOfElement.join("")
