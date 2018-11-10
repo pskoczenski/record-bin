@@ -31,15 +31,15 @@
     // searchInput.onkeyup = function(){
     searchSubmitBtn.onclick = function(){
       var query = $("input[type=text][name=album_search]").val();
-      const discogApiUrl = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&type=release&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
+      let discogApiUrl = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&type=release&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
       fetch(discogApiUrl)
       .then((resp) => resp.json())
       .then(function(data) {
         console.log(data)
         let results = data["results"]
-        debugger
+        let resLng = results.length
         let listOfElement = []
-        for (i = 0; i < 15; i++) {
+        for (i = 0; i < resLng; i++) {
           r = results[i]
           title = r["title"];
           cover = r["cover_image"]
