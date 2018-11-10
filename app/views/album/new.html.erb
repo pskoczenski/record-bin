@@ -1,15 +1,18 @@
 <div class="container">
   <h1>
-    Is this the Album you were looking for?
+    <%= @album_title %>
   </h1>
-  <div class="container">
-    <img src="<%= @album_image %>" alt="" style="width: 300px">
-    <p>Artist: <%= @album_artist %></p>
-    <p>Title: <%= @album_title %></p>
-    <p>Released: <%= @album_release_date %></p>
-    <p>Country: <%= @album_country %></p>
-    <p>Label: <%= @album_label %></p>
-  </div>
+  <h5>
+    <%= @album_artist %>
+  </h5>
+  <img src="<%= @album_image %>" alt="" style="width: 300px">
+  <br>
+  <p>Released: <%= @album_release_date %></p>
+  <p>Country: <%= @album_country %></p>
+  <p>Label: <%= @album_label %></p>
+  <p>Genre: <%= @album_genre %></p>
+  <p>Style: <%= @album_subgenre %></p>
+  <p><%= @album_notes %></p>
 </div>
 
 <!--

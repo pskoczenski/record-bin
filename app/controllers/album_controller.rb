@@ -18,6 +18,9 @@ class AlbumController < ApplicationController
     @album_image = params[:image]
     @album_release_date = record.released
     @album_country = record.country
+    @album_genre = record.genres[0]
+    @album_subgenre = record.styles[0]
+    @album_notes = record.notes
     # abort
   end
 
