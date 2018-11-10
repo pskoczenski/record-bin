@@ -5,11 +5,12 @@ class AlbumController < ApplicationController
 
     album_id = params[:album_id].to_i
     type = params[:type]
-    if type == "master"
-      record   = discogs.get_master(album_id)
-    elsif type == "release"
-      record   = discogs.get_release(album_id)
-    end
+    # if type == "master"
+    #   record = discogs.get_master(album_id)
+    # elsif type == "release"
+    #   record = discogs.get_release(album_id)
+    # end
+    record = discogs.get_release(album_id)
     @album_title = record.title
     @album_id = record.id
     @album_artist = record.artists[0].name

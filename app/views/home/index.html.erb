@@ -24,22 +24,20 @@
   }
 </style>
 <script type="text/javascript">
-  const url = 'https://api.discogs.com/releases/10816982';
+  // const discogUrl = 'https://api.discogs.com/releases/10816982';
   const searchInput = document.getElementById('album_search_input')
   const searchSubmitBtn = document.getElementById('album_search_btn')
   function btnTest() {
     // searchInput.onkeyup = function(){
     searchSubmitBtn.onclick = function(){
       var query = $("input[type=text][name=album_search]").val();
-      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&type=release&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
-      fetch(url)
+      const discogApiUrl = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&type=release&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
+      fetch(discogApiUrl)
       .then((resp) => resp.json())
       .then(function(data) {
         console.log(data)
-        // debugger
-        // let result = data;
         let results = data["results"]
-        // let len = result["results"].length
+        debugger
         let listOfElement = []
         for (i = 0; i < 15; i++) {
           r = results[i]
