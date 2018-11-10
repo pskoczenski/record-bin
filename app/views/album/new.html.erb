@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>
+    Is this the Album you were looking for?
+  </h1>
+  <div class="container">
+    <img src="<%= @album_image %>" alt="" style="width: 300px">
+    <p>Artist: <%= @album_artist %></p>
+    <p>Title: <%= @album_title %></p>
+    <p>Released: <%= @album_release_date %></p>
+    <p>Country: <%= @album_country %></p>
+    <p>Label: <%= @album_label %></p>
+  </div>
+</div>
+
+<!--
+@album_id = record.id
+@album_artist = record.artists_sort
+@album_label = record.labels[0].name
+@album_image = params[:image]
+@album_release_date = record.released
+ -->

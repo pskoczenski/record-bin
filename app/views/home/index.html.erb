@@ -31,7 +31,7 @@
     // searchInput.onkeyup = function(){
     searchSubmitBtn.onclick = function(){
       var query = $("input[type=text][name=album_search]").val();
-      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
+      const url = 'https://api.discogs.com//database/search?q={' + query + ' }&format=vinyl&type=release&token=IikKyXXSghzgSHkDvBsnFxTcJyYPSkmOoIwZMhsL'
       fetch(url)
       .then((resp) => resp.json())
       .then(function(data) {
@@ -41,24 +41,29 @@
         let results = data["results"]
         // let len = result["results"].length
         let listOfElement = []
-        for (i = 0; i < 5; i++) {
+        for (i = 0; i < 15; i++) {
           r = results[i]
           title = r["title"];
           cover = r["cover_image"]
           type = r["type"]
           format = r["format"]
           id = r["id"]
+          country = r["country"]
+          catno = r["catno"]
+          year = r["year"]
           const markup = `
-            <a href="album/new?album_id=${id} &type=${type}">
+            <a href="album/new?album_id=${id}&type=${type}&image=${cover}">
               <li>
                 <div class="result-container">
                   <img src="${cover}" id='discogs_thumb'>
                   <h2>
                     ${title}
                   </h2>
-                  <p class="result-type">${type}</p>
-                  <p class="result-format">${format}</p>
-                  <p class="result-id">${id}</p>
+                  <p class="result-">DiscogType: ${type}</p>
+                  <p class="result-">Year: ${year}</p>
+                  <p class="result-">Country: ${country}</p>
+                  <p class="result-id">Release Id: ${id}</p>
+                  <p class="result-id">Catalog No: ${catno}</p>
                 </div>
               </li>
             </a>
