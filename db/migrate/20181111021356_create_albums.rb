@@ -26,15 +26,3 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
     end
   end
 end
-# styles: [],
-year: 2018,
-id: 11884352,
-genres: [],
-master_id: 1350415,
-released: "2018-04-20",
-tracklist: [],
-country: "US",
-identifiers: [],
-companies: [ ],
-resource_url: "https://api.discogs.com/releases/11884352",
-data_quality: "
