@@ -8,10 +8,10 @@
     <button id="album_search_btn" type="button" name="button">Search</button>
   </div>
   <br>
-  <div class="album_search_content">
+  <div id="album_search_results">
   </div>
-  <ul id="artitst_title">
-  </ul>
+  <!-- <ul id="artitst_title"> -->
+  <!-- </ul> -->
 </div>
 <style media="screen">
   #discogs_thumb {
@@ -22,6 +22,7 @@
 <script type="text/javascript">
   const searchInput = document.getElementById('album_search_input')
   const searchSubmitBtn = document.getElementById('album_search_btn')
+  const searchResults = document.querySelector("#album_search_results")
   function btnTest() {
     // searchInput.onkeyup = function(){
     searchSubmitBtn.onclick = function(){
@@ -46,26 +47,25 @@
           year = r["year"]
           const markup = `
             <a href="new?album_id=${id}&type=${type}&image=${cover}">
-              <li>
-                <div class="result-container">
-                  <img src="${cover}" id='discogs_thumb'>
-                  <h2>
-                    ${title}
-                  </h2>
-                  <p class="result-">DiscogType: ${type}</p>
-                  <p class="result-">Year: ${year}</p>
-                  <p class="result-">Country: ${country}</p>
-                  <p class="result-id">Release Id: ${id}</p>
-                  <p class="result-id">Catalog No: ${catno}</p>
-                </div>
-              </li>
+              <div class="result-container">
+                <img src="${cover}" id='discogs_thumb'>
+                <h2>
+                  ${title}
+                </h2>
+                <p class="result-">DiscogType: ${type}</p>
+                <p class="result-">Year: ${year}</p>
+                <p class="result-">Country: ${country}</p>
+                <p class="result-id">Release Id: ${id}</p>
+                <p class="result-id">Catalog No: ${catno}</p>
+              </div>
             </a>
           `;
           listOfElement.push(markup)
         }
         loe = listOfElement.join("")
-        container = document.querySelector("#artitst_title")
-        container.innerHTML = loe
+        // container = document.querySelector("#artitst_title")
+        // container.innerHTML = loe
+        searchResults.innerHTML = loe
       })
     };
   }
