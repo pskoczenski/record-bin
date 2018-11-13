@@ -1,5 +1,6 @@
 class AlbumController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def new
     discogs = Discogs::Wrapper.new("vinyl-crate")
 
@@ -22,6 +23,10 @@ class AlbumController < ApplicationController
     @album_subgenre = record.styles[0]
     @album_notes = record.notes
     # abort
+  end
+
+  def search
+    @user = current_user
   end
 
 
