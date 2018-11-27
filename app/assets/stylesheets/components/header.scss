@@ -1,0 +1,15 @@
+.header-container {
+  background-color: #cacdd1;
+  margin-bottom: 30px;
+}
+.header-main-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-nav {
+  padding: 20px;
+}
+.header-actions {
+  padding: 20px;
+}

@@ -10,10 +10,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_04_021104) do
+ActiveRecord::Schema.define(version: 2018_11_11_021434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "collection_id"
+    t.bigint "list_id"
+    t.string "title"
+    t.string "artist"
+    t.string "image"
+    t.string "discog_id"
+    t.string "label"
+    t.string "release_date"
+    t.string "country"
+    t.string "genre"
+    t.string "subgenre"
+    t.text "notes"
+    t.text "playback_notes"
+    t.string "sleeve_condition"
+    t.string "disc_condition"
+    t.string "pressed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["collection_id"], name: "index_albums_on_collection_id"
+    t.index ["list_id"], name: "index_albums_on_list_id"
+    t.index ["user_id"], name: "index_albums_on_user_id"
+  end
+
+  create_table "collections", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_collections_on_user_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "user_photo"
